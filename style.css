@@ -1,0 +1,89 @@
+/* CSS Reset */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+* {
+  margin: 0;
+	padding: 0;
+}
+
+body {
+	line-height: 1;
+	font-family: "Inter", -apple-system, sans-serif;
+}
+
+ol, ul {
+	list-style: none;
+}
+
+blockquote, q {
+	quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* Starts Here */
+
+#drop-down-header {
+  background-color: antiquewhite;
+  padding: 4px;
+  display: flex;
+}
+
+#dropdown {
+  display: flex;
+}
+
+.dropdown-item {
+  background-color: white;
+  outline: 1px solid black;
+  /* padding: 16px; */
+}
+
+/* .dropdown-item:hover {
+  filter: brightness(0.8);
+} */
+
+.dropdown-item:hover .dropdown-btn {
+  filter: brightness(0.8);
+}
+
+.dropdown-item:hover #dropdown-menu {
+  display: block;
+}
+
+.dropdown-btn {
+  padding: 16px;
+}
+
+.link {
+  display: block;
+  text-decoration: none;
+  color: black;
+  padding: 12px 16px;
+  min-width: 100px;
+  outline: 1px solid black;
+  background-color: white;
+}
+
+.link:hover {
+  filter: brightness(0.8);
+}
+
+#dropdown-menu {
+  position: absolute;
+  display: none;
+  /* padding: 12px 16px; */
+}
+
+#dropdown-menu ul li {
+  min-width: 100px;
+}
