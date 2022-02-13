@@ -6,6 +6,10 @@
 	padding: 0;
 }
 
+html, body {
+    height: 100%;
+}
+
 body {
 	line-height: 1;
 	font-family: "Inter", -apple-system, sans-serif;
@@ -31,6 +35,12 @@ table {
 }
 
 /* Starts Here */
+
+#container {
+  height: 100%;
+}
+
+/* dropdown */
 
 #dropdown-header {
   background-color: antiquewhite;
@@ -83,5 +93,85 @@ table {
   position: absolute;
   display: block;
   visibility: hidden;
-  /* padding: 12px 16px; */
+}
+
+/* mobile menu */
+#mobile-container {
+  height: 100%;
+  display: flex;
+  /* background-color: aqua; */
+  justify-content: center;
+  align-items: center;
+}
+
+#mobile-screen {
+  display: flex;
+  flex-direction: column;
+  align-content:flex-end;
+
+  border: 2px solid black;
+  border-radius: 10px;
+  min-width: 375px;
+  min-height: 812px;
+}
+
+#navbar {
+  display: flex;
+  /* align-items: center; */
+
+  background-color: rgb(61, 79, 126);
+  border-radius: 10px 10px 0px 0px;
+  min-height: 64px;
+
+  padding: 8px;
+}
+
+#nav-items {
+  display: flex;
+  /* background-color: blue; */
+  align-items: stretch;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  padding: 14px;
+  background-color: white;
+  cursor: pointer;
+  /* height: 40px; */
+}
+
+#mobile-menu {
+  display: block;
+  max-height: 0px;
+  overflow: hidden;
+  background-color: red;
+  transition: max-height 0.6s ease-in-out;
+  /* position: absolute; */
+}
+
+/* #hamburger:focus ~ #mobile-menu {
+  could use a sibling combinator but #mobile-menu doesn't share a parent
+} */
+
+.mobile-link {
+  display: block;
+  text-decoration: none;
+  background-color: white;
+  border: 1px solid black;
+  padding: 12px;
+}
+
+#content {
+  flex: 1;
+  width: 375px;
+  padding: 16px;
+  background-color: antiquewhite;
+}
+
+#tabbar {
+  background-color: rgb(61, 79, 126);
+  min-height: 55px;
 }

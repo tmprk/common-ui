@@ -17,3 +17,17 @@ dropdownItem.forEach((item) => {
     menu.style.visibility = 'hidden';
   })
 })
+
+// mobile menu
+
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobile-menu');
+hamburger.addEventListener('click', function (event) {
+  if (event.target.getAttribute('clicked') === 'false') {
+    mobileMenu.style.maxHeight = '200px';
+    event.target.setAttribute('clicked', 'true')
+  } else {
+    mobileMenu.style.maxHeight = '0px';
+    event.target.setAttribute('clicked', 'false')
+  }
+})
