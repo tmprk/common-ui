@@ -1,0 +1,24 @@
+{
+  "sample": [
+    {
+      "description": "Picture 1",
+      "image-url": "https://picsum.photos/450/300"
+    },
+    {
+      "description": "Picture 2",
+      "image-url": "https://picsum.photos/450/300"
+    },
+    {
+      "description": "Picture 3",
+      "image-url": "https://picsum.photos/450/300"
+    },
+    {
+      "description": "Picture 4",
+      "image-url": "https://picsum.photos/450/300"
+    },
+    {
+      "description": "Picture 5",
+      "image-url": "https://picsum.photos/450/300"
+    }
+  ]
+}

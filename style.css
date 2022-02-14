@@ -201,6 +201,10 @@ div {
   overflow-x: scroll;
 }
 
+#slides-container::-webkit-scrollbar {
+    display: none;
+}
+
 #slides {
   display: flex;
   /* margin-right: 1px; */
@@ -232,10 +236,12 @@ div {
 #arrow-controls button {
   width: 10%;
   border: none;
-  background-color: rgba(135, 135, 135, 0.235);
+  background-color: rgba(138, 138, 138, 0.2);
   transition: filter 300ms;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-
 
 /* https://www.w3schools.com/howto/howto_css_arrows.asp */
 .arrow {
@@ -264,7 +270,7 @@ div {
 }
 
 #left-button:hover, #right-button:hover {
-  filter: brightness(0.7);
+  filter: brightness(0.3);
 }
 
 #progress-dots {
@@ -284,4 +290,8 @@ div {
 
 #dot[current] {
   filter: brightness(0.6);
+}
+
+#dot:hover {
+  cursor: pointer;
 }

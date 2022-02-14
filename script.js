@@ -17,6 +17,8 @@
 //   })
 // })
 
+
+
 // mobile menu
 // const hamburger = document.getElementById('hamburger');
 // const mobileMenu = document.getElementById('mobile-menu');
@@ -30,12 +32,48 @@
 //   }
 // })
 
+
+
 // image carousel
+
+async function fetchImages() {
+  await fetch('photos.json')
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error('unsuccessful network call');
+      }
+      return response.json();
+    })
+    .then((data) => {
+      console.log(data);
+    })
+    .catch((err) => {
+      console.error(err);
+    })
+}
 
 const leftArrow = document.getElementById('left-button');
 const rightArrow = document.getElementById('right-button');
 const slideContainer = document.getElementById('slides-container');
+const slidesTotalWidth = slideContainer.scrollWidth;
+console.log(slidesTotalWidth);
+
+leftArrow.addEventListener('click', function (e) {
+  // test scrolling
+  console.log('hello');
+  slideContainer.scrollBy({
+    left: -450,
+    behavior: "smooth"
+  })
+})
 
 rightArrow.addEventListener('click', function (e) {
   // test scrolling
+  console.log('scroll to the right');
+  slideContainer.scrollBy({
+    left: 450,
+    behavior: "smooth"
+  });
 })
+
+fetchImages();
