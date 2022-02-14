@@ -32,3 +32,10 @@
 
 // image carousel
 
+const leftArrow = document.getElementById('left-button');
+const rightArrow = document.getElementById('right-button');
+const slideContainer = document.getElementById('slides-container');
+
+rightArrow.addEventListener('click', function (e) {
+  // test scrolling
+})
