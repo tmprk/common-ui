@@ -37,11 +37,16 @@
 // todo: every 5 seconds, change slide
 // todo: infinite slides
 
+let currentSlide = 0;
 const leftArrow = document.getElementById('left-button');
 const rightArrow = document.getElementById('right-button');
 const slideContainer = document.getElementById('slides-container');
+const progressDots = document.getElementById('progress-dots');
 const slides = document.getElementById('slides');
+
 const slidesTotalWidth = slideContainer.scrollWidth;
+const imageWidth = 450;
+
 console.log(slidesTotalWidth);
 
 function createSlideHtml(arrayItem) {
@@ -53,6 +58,24 @@ function createSlideHtml(arrayItem) {
   slideItem.appendChild(image);
 
   return slideItem.outerHTML;
+}
+
+function moveForward() {
+  console.log('scroll to the right');
+  slideContainer.scrollBy({
+    left: imageWidth,
+    behavior: 'smooth',
+  });
+  currentSlide -= 1;
+}
+
+function moveBackward() {
+  console.log('scroll to the left');
+  slideContainer.scrollBy({
+    left: -imageWidth,
+    behavior: 'smooth',
+  });
+  currentSlide += 1;
 }
 
 function nextSlide() {
@@ -69,9 +92,23 @@ async function fetchImages() {
       return response.json();
     })
     .then((data) => {
+      // populate with images
       const imageData = data.dummy;
       const slidesInnerContent = imageData.map(createSlideHtml).join('');
       slides.innerHTML = slidesInnerContent;
+
+      // create progress dots
+      const progressDotsContent = imageData.map((element, index) => {
+        const dot = document.createElement('div');
+        dot.id = 'dot';
+        dot.setAttribute('ind', index);
+        if (currentSlide === index) {
+          dot.setAttribute('current', '');
+        }
+        console.log(index);
+        return dot.outerHTML;
+      });
+      progressDots.innerHTML = progressDotsContent.join('');
     })
     .catch((err) => {
       console.error(err);
@@ -79,21 +116,11 @@ async function fetchImages() {
 }
 
 leftArrow.addEventListener('click', () => {
-  // test scrolling
-  console.log('hello');
-  slideContainer.scrollBy({
-    left: -450,
-    behavior: 'smooth',
-  });
+  moveBackward();
 });
 
 rightArrow.addEventListener('click', () => {
-  // test scrolling
-  console.log('scroll to the right');
-  slideContainer.scrollBy({
-    left: 450,
-    behavior: 'smooth',
-  });
+  moveForward();
 });
 
 fetchImages();
