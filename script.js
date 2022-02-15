@@ -17,8 +17,6 @@
 //   })
 // })
 
-
-
 // mobile menu
 // const hamburger = document.getElementById('hamburger');
 // const mobileMenu = document.getElementById('mobile-menu');
@@ -32,9 +30,35 @@
 //   }
 // })
 
-
-
 // image carousel
+// todo: create slides based on json images (done)
+// todo: create dots based on how many images
+// todo: scroll by scrollWidth / total images
+// todo: every 5 seconds, change slide
+// todo: infinite slides
+
+const leftArrow = document.getElementById('left-button');
+const rightArrow = document.getElementById('right-button');
+const slideContainer = document.getElementById('slides-container');
+const slides = document.getElementById('slides');
+const slidesTotalWidth = slideContainer.scrollWidth;
+console.log(slidesTotalWidth);
+
+function createSlideHtml(arrayItem) {
+  const slideItem = document.createElement('div');
+  slideItem.className = 'slide';
+
+  const image = document.createElement('img');
+  image.src = arrayItem['image-url'];
+  slideItem.appendChild(image);
+
+  return slideItem.outerHTML;
+}
+
+function nextSlide() {
+  // do whatever you like here
+  setTimeout(nextSlide, 5000);
+}
 
 async function fetchImages() {
   await fetch('photos.json')
@@ -45,35 +69,31 @@ async function fetchImages() {
       return response.json();
     })
     .then((data) => {
-      console.log(data);
+      const imageData = data.dummy;
+      const slidesInnerContent = imageData.map(createSlideHtml).join('');
+      slides.innerHTML = slidesInnerContent;
     })
     .catch((err) => {
       console.error(err);
-    })
+    });
 }
 
-const leftArrow = document.getElementById('left-button');
-const rightArrow = document.getElementById('right-button');
-const slideContainer = document.getElementById('slides-container');
-const slidesTotalWidth = slideContainer.scrollWidth;
-console.log(slidesTotalWidth);
-
-leftArrow.addEventListener('click', function (e) {
+leftArrow.addEventListener('click', () => {
   // test scrolling
   console.log('hello');
   slideContainer.scrollBy({
     left: -450,
-    behavior: "smooth"
-  })
-})
+    behavior: 'smooth',
+  });
+});
 
-rightArrow.addEventListener('click', function (e) {
+rightArrow.addEventListener('click', () => {
   // test scrolling
   console.log('scroll to the right');
   slideContainer.scrollBy({
     left: 450,
-    behavior: "smooth"
+    behavior: 'smooth',
   });
-})
+});
 
 fetchImages();
